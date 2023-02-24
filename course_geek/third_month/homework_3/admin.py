@@ -11,22 +11,20 @@ async def admin_if(message: types.Message):
             return True
     return False
 
-
 async def proverka(message: types.Message):
     words = ['fool', 'fool1']
     admins_mention = ""
     if message.chat.type != 'private':
-
         admins = await bot.get_chat_administrators(chat_id=message.chat.id)
         for admin in admins:
             admins_mention += f"@{admin.user.username}, "
         for word in words:
             if word == message.text:
-                await message.reply(text=f"{admins_mention} забанить ли данного человека @{message.from_user.username}/"
+                await message.reply(text=f"{admins_mention} забанить ли данного человека @{message.from_user.username} / "
                                          f"{message.from_user.id}")
                 break
 
-async def other(message: types.Message):
+async def delete(message: types.Message):
     pprint(message.reply_to_message["text"])
     admin_author = await admin_if(message)
     if admin_author:
