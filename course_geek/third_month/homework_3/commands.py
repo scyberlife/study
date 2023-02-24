@@ -34,7 +34,7 @@ there are any words from the list.
 """
 
 async def ban_user(message: types.Message):
-    if message.reply_to_message:
+    if message.reply_to_message and message.chat.type != 'private':
         admin_author = await admin_if(message)
         user_id = int(message.reply_to_message["text"].split(':')[1])
         if admin_author:
@@ -43,7 +43,7 @@ async def ban_user(message: types.Message):
                                         user_id=user_id)
                 await message.answer(f"The user with ID {user_id} has been banned.")
             except Exception as e:
-                await message.answer(f"Failed to ban user with ID {user_id}. Error: {e}")
+                await message.answer(f"Failed to ban user with ID {user_id}. He is an administrator of the group.")
 
 """
 The function bans the user.
