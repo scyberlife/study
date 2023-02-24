@@ -14,7 +14,7 @@ async def admin_if(message: types.Message):
 Function checks if the user is an administrator.
 """
 
-async def proverka(message: types.Message):
+async def words_check(message: types.Message):
     words = ['fool', 'fool1']
     admins_mention = ""
     if message.chat.type != 'private':
