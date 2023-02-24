@@ -1,0 +1,13 @@
+git clone ''
+git remote remove origin
+git init
+git remote add origin ''
+git add .
+git commit -m ''
+git push origin ''
+git rm --cached ''
+git rm --cached -r ''
+git branch
+git branch ''
+git checkout ''
+git checkout -b ''
