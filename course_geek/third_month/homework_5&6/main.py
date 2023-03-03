@@ -12,9 +12,9 @@ from db.base import (
 from notifier import find
 from notifier import (
     Form,
-    start_form,
     process_hour,
     process_name,
+    process_minutes
 )
 
 
@@ -26,8 +26,11 @@ async def startup(_):
     get_products()
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
-    dp.register_message_handler(products, commands=['products'])
+    logging.basicConfig(level=logging.INFO)
+    dp.register_message_handler(products, commands=["products"])
+    dp.register_message_handler(process_name, state=Form.name)
+    dp.register_message_handler(process_hour, state=Form.hour)
+    dp.register_message_handler(process_minutes, state=Form.minutes)
     dp.register_message_handler(find)
     scheduler.start()
     executor.start_polling(
