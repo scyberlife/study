@@ -48,7 +48,6 @@ def populate_products():
 def get_products():
     cur.execute("""SELECT * FROM products""")
     all_products = cur.fetchall()
-    print(all_products)
     return all_products
 
 
