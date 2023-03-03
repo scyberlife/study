@@ -15,7 +15,9 @@ class Form(StatesGroup):
 async def process_name(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['name'] = message.text
-        await message.reply("Введите час.")
+        keyboard = ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
+        keyboard.add(*(str(i) for i in range(1, 25)))
+        await message.reply("Введите час.", reply_markup=keyboard)
         await Form.hour.set()
 
 
@@ -23,7 +25,7 @@ async def process_hour(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['hour'] = message.text
         keyboard = ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
-        keyboard.add(*(str(i) for i in range(1, 13)))
+        keyboard.add(*(str(i) for i in range(1, 60)))
         await message.reply("Введите минуты.", reply_markup=keyboard)
         await Form.minutes.set()
 
