@@ -1,4 +1,3 @@
-import asyncio
 from aiogram import types
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher import FSMContext
@@ -53,7 +52,8 @@ async def find(message: types.Message, state: FSMContext):
 
 
 def notify(chat_id: int, name: str):
-    asyncio.create_task(bot.send_message(chat_id=chat_id, text=name))
+    bot.send_message(chat_id=chat_id,
+                     text='name')
 
 
 async def add(name: str, hour: int, minutes: int, chat_id: int):
