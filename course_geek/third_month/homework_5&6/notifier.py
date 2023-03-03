@@ -55,4 +55,4 @@ def notify(chat_id: int, name: str):
 
 
 async def add(name: str, hour: int, minutes: int, chat_id: int):
-    scheduler.add_job(notify, 'cron', day_of_week='*', hour=hour, args=(chat_id, name, ))
+    scheduler.add_job(notify, 'cron', day_of_week='*', hour=hour, minute=minutes, args=(chat_id, name, ))
