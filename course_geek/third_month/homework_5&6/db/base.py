@@ -18,6 +18,7 @@ def create_tables():
         photo TEXT
     )""")
 
+
     cur.execute("""CREATE TABLE IF NOT EXISTS orders(
         order_id INTEGER PRIMARY KEY,
         user_name TEXT,
